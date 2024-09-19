@@ -7,6 +7,9 @@ export default function WorkingMeme() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
   const [imageName, setImageName] = useState('buzz');
+  const [imageUrl, setImageUrl] = useState(
+    `https://api.memegen.link/images/${imageName}.jpg`,
+  );
 
   return (
     <>
@@ -46,7 +49,7 @@ export default function WorkingMeme() {
           type="button"
           onClick={() => {
             FileSaver.saveAs(
-              `https://api.memegen.link/images/${imageName}/${topText}%2F${bottomText}.jpg`,
+              `https://api.memegen.link/images/${imageName}/${topText}/${bottomText}.jpg`,
               `${imageName}.jpg`,
             );
           }}
@@ -58,7 +61,7 @@ export default function WorkingMeme() {
           data-test-id="meme-image"
           id="meme-image"
           alt={`Meme ${imageName} ${topText} ${bottomText}`}
-          src={`https://api.memegen.link/images/${imageName}/${topText}%2F${bottomText}.jpg`}
+          src={`https://api.memegen.link/images/${imageName}/${topText ? encodeURIComponent(topText) : ''}%2F${bottomText ? encodeURIComponent(bottomText) : ''}.jpg`}
           width="600"
         />
       </form>
