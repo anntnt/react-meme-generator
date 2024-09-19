@@ -7,8 +7,10 @@ export default function WorkingMeme() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
   const [imageName, setImageName] = useState('buzz');
-
-  const imageUrl = `https://api.memegen.link/images/${imageName}/${topText}%2F${bottomText}.jpg`;
+  const [imageUrl, setImageUrl] = useState(
+    `https://api.memegen.link/images/${imageName}.jpg`,
+  );
+  // const imageUrl = `https://api.memegen.link/images/${imageName}/${topText}%2F${bottomText}.jpg`;
 
   return (
     <>
@@ -44,6 +46,17 @@ export default function WorkingMeme() {
               : ''
           }
         />
+        <button
+          type="button"
+          onClick={() => {
+            setImageUrl(
+              `https://api.memegen.link/images/${imageName}/${topText}%2F${bottomText}.jpg`,
+            );
+          }}
+          data-test-id="generate-meme"
+        >
+          Generate
+        </button>
         <button
           type="button"
           onClick={() => {
