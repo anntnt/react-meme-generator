@@ -61,7 +61,7 @@ export default function WorkingMeme() {
           data-test-id="meme-image"
           id="meme-image"
           alt={`Meme ${imageName} ${topText} ${bottomText}`}
-          src={`https://api.memegen.link/images/${imageName}/${topText ? encodeURIComponent(topText) : ''}%2F${bottomText ? encodeURIComponent(bottomText) : ''}.jpg`}
+          src={`https://api.memegen.link/images/${imageName}/${topText}%2F${bottomText}.jpg`}
           width="600"
         />
       </form>
