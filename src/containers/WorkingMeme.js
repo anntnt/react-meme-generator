@@ -7,9 +7,9 @@ export default function WorkingMeme() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
   const [imageName, setImageName] = useState('buzz');
-  const [imageUrl, setImageUrl] = useState(
+  /* const [imageUrl, setImageUrl] = useState(
     `https://api.memegen.link/images/${imageName}.jpg`,
-  );
+  ); */
 
   return (
     <>
