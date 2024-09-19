@@ -1,8 +1,6 @@
 import FileSaver from 'file-saver';
 import { useState } from 'react';
 
-const DIR = './memes';
-
 // import styles from './WorkingMeme.module.scss';
 
 export default function WorkingMeme() {
