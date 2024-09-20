@@ -10,7 +10,18 @@ export default function WorkingMeme() {
   const [imageUrl, setImageUrl] = useState(
     `https://api.memegen.link/images/${imageName}.jpg`,
   );
-  // const imageUrl = `https://api.memegen.link/images/${imageName}/${topText}%2F${bottomText}.jpg`;
+
+  const specialCharacters = {
+    '#': '~h',
+    '?': '~q',
+    '/': '~s',
+  };
+  function convertSpecialChar(text) {
+    for (const [char, pattern] of Object.entries(specialCharacters)) {
+      text = text.replaceAll(char, pattern);
+    }
+    return text;
+  }
 
   return (
     <>
@@ -50,7 +61,7 @@ export default function WorkingMeme() {
           type="button"
           onClick={() => {
             setImageUrl(
-              `https://api.memegen.link/images/${imageName}/${topText}%2F${bottomText}.jpg`,
+              `https://api.memegen.link/images/${imageName}/${convertSpecialChar(topText)}%2F${convertSpecialChar(bottomText)}.jpg`,
             );
           }}
           data-test-id="generate-meme"
