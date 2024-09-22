@@ -94,9 +94,6 @@ export default function WorkingMeme() {
         <input
           id="memeTemplate"
           onKeyDown={(event) => {
-            /* (event.currentTarget.value && event.key) === 'Enter'
-              ? setImageName(event.currentTarget.value)
-              : '' */
             if ((event.currentTarget.value && event.key) === 'Enter') {
               setImageName(event.currentTarget.value);
               onChangeHandler(
@@ -111,7 +108,14 @@ export default function WorkingMeme() {
           type="button"
           onClick={() => {
             setImageUrl(
-              `https://api.memegen.link/images/${imageName}/${convertSpecialChar(topText)}%2F${convertSpecialChar(bottomText)}.jpg`,
+              (topText &&
+                bottomText &&
+                `https://api.memegen.link/images/${imageName}/${convertSpecialChar(topText)}%2F${convertSpecialChar(bottomText)}.jpg`) ||
+                (topText &&
+                  `https://api.memegen.link/images/${imageName}/${convertSpecialChar(topText)}.jpg`) ||
+                (bottomText &&
+                  `https://api.memegen.link/images/${imageName}/${convertSpecialChar(bottomText)}.jpg`) ||
+                `https://api.memegen.link/images/${imageName}.jpg`,
             );
           }}
           data-test-id="generate-meme"
